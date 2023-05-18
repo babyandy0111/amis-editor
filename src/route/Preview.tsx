@@ -127,7 +127,7 @@ export default inject('store')(
             children.push(
               <i
                 key="edit"
-                data-tooltip="编辑"
+                data-tooltip="編輯"
                 data-position="bottom"
                 className={'navbtn fa fa-pencil'}
                 onClick={(e: React.MouseEvent) => {

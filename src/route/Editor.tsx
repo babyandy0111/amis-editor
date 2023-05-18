@@ -9,19 +9,14 @@ import {IMainStore} from '../store';
 import '../editor/DisabledEditorPlugin'; // 用于隐藏一些不需要的Editor预置组件
 import '../renderer/MyRenderer';
 import '../editor/MyRenderer';
+require('../local/zh-TW');
 
 let currentIndex = -1;
 
-let host = `${window.location.protocol}//${window.location.host}`;
+// let host = `${window.location.protocol}//${window.location.host}`;
 let iframeUrl = '/editor.html';
 
-// 如果在 gh-pages 里面
-if (/^\/amis-editor-demo/.test(window.location.pathname)) {
-  host += '/amis-editor';
-  iframeUrl = '/amis-editor-demo/demo' + iframeUrl;
-}
-
-const schemaUrl = `${host}/schema.json`;
+// const schemaUrl = `${host}/schema.json`;
 
 const editorLanguages = [
   {
@@ -31,6 +26,10 @@ const editorLanguages = [
   {
     label: 'English',
     value: 'en-US'
+  },
+  {
+    label: '繁體中文',
+    value: 'zh-TW'
   }
 ];
 
@@ -71,7 +70,7 @@ export default inject('store')(
     return (
       <div className="Editor-Demo">
         <div className="Editor-header">
-          <div className="Editor-title">amis 可视化编辑器</div>
+          <div className="Editor-title">CGA</div>
           <div className="Editor-view-mode-group-container">
             <div className="Editor-view-mode-group">
               <div
@@ -82,7 +81,7 @@ export default inject('store')(
                   store.setIsMobile(false);
                 }}
               >
-                <Icon icon="pc-preview" title="PC模式" />
+                <Icon icon="pc-preview" title="PC" />
               </div>
               <div
                 className={`Editor-view-mode-btn editor-header-icon ${
@@ -92,7 +91,7 @@ export default inject('store')(
                   store.setIsMobile(true);
                 }}
               >
-                <Icon icon="h5-preview" title="移动模式" />
+                <Icon icon="h5-preview" title="Mobile" />
               </div>
             </div>
           </div>
@@ -114,11 +113,11 @@ export default inject('store')(
                 store.setPreview(!store.preview);
               }}
             >
-              {store.preview ? '编辑' : '预览'}
+              {store.preview ? '編輯' : '預覽'}
             </div>
             {!store.preview && (
               <div className={`header-action-btn exit-btn`} onClick={exit}>
-                退出
+                關閉
               </div>
             )}
           </div>
@@ -135,7 +134,7 @@ export default inject('store')(
             }}
             onSave={save}
             className="is-fixed"
-            $schemaUrl={schemaUrl}
+            // $schemaUrl={schemaUrl}
             iframeUrl={iframeUrl}
             showCustomRenderersPanel={true}
             amisEnv={{

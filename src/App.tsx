@@ -2,7 +2,7 @@ import React from 'react';
 import {Provider} from 'mobx-react';
 import {toast, alert, confirm} from 'amis';
 import axios from 'axios';
-import {MainStore} from './store/index';
+import {MainStore} from './store';
 import RootRoute from './route/index';
 import copy from 'copy-to-clipboard';
 
@@ -38,7 +38,7 @@ export default function (): JSX.Element {
       isCancel: (e: any) => axios.isCancel(e),
       notify: (type: 'success' | 'error' | 'info', msg: string) => {
         toast[type]
-          ? toast[type](msg, type === 'error' ? '系统错误' : '系统消息')
+          ? toast[type](msg, type === 'error' ? '系統錯誤' : '系統訊息')
           : console.warn('[Notify]', type, msg);
         console.log('[notify]', type, msg);
       },
@@ -48,7 +48,7 @@ export default function (): JSX.Element {
         const ret = copy(contents, options);
         ret &&
           (!options || options.shutup !== true) &&
-          toast.info('内容已拷贝到剪切板');
+          toast.info('內容已複製');
         return ret;
       }
     }
