@@ -29,15 +29,15 @@ export default inject('store')(
         <div>
           <div className={`a-Layout-headerBar`}>
             <div className="hidden-xs p-t-sm pull-right px-2">
-              <Button size="sm" className="m-r-xs" level="success" disabled>
-                全部导出
-              </Button>
+              {/*<Button size="sm" className="m-r-xs" level="success" disabled>*/}
+              {/*  全部导出*/}
+              {/*</Button>*/}
               <Button
                 size="sm"
                 level="info"
                 onClick={() => store.setAddPageIsOpen(true)}
               >
-                新增页面
+                新增頁面
               </Button>
             </div>
           </div>
@@ -58,7 +58,7 @@ export default inject('store')(
           key={store.asideFolded ? 'folded-aside' : 'aside'}
           navigations={[
             {
-              label: '导航',
+              label: '',
               children: navigations
             }
           ]}
@@ -181,7 +181,7 @@ export default inject('store')(
         schema: {
           type: 'page',
           title: value.label,
-          body: '这是你刚刚新增的页面。'
+          body: '這是你剛剛新增的頁面。'
         }
       });
       store.setAddPageIsOpen(false);
